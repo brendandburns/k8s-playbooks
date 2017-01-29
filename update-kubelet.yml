@@ -1,0 +1,8 @@
+- hosts: nodes
+  tasks:
+  - name: Update cache and kubelet 
+    apt:
+      name: kubelet 
+      state: latest
+      update_cache: yes
+    sudo: yes

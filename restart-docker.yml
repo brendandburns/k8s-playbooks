@@ -1,0 +1,6 @@
+- hosts: nodes
+  tasks:
+  - service:
+      name: kubelet 
+      state: restarted
+    sudo: yes
