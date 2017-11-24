@@ -17,4 +17,4 @@
       name: kubectl
       state: latest
       update_cache: yes 
-    become:true
+    become: true
