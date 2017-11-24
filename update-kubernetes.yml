@@ -5,16 +5,16 @@
       name: kubelet 
       state: latest
       update_cache: yes
-    sudo: yes
+    become: true 
   - name: Update kubeadm
     apt:
       name: kubeadm
       state: latest
       update_cache: yes
-    sudo: yes
+    become: true
   - name: Update kubectl
     apt:
       name: kubectl
       state: latest
       update_cache: yes 
-    sudo: yes
+    become:true
