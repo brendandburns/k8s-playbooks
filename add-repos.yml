@@ -1,0 +1,12 @@
+- hosts: all 
+  tasks:
+  - name: add key 
+    apt_key:
+      url:  https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+    become: true
+  - name: add repo
+    apt_repository:
+      repo: deb https://packages.cloud.google.com/apt/ kubernetes-xenial main
+      state: present
+    become: true

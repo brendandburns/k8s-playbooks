@@ -1,0 +1,14 @@
+- hosts: master 
+  tasks:
+  - name: ip_forwarding
+    sysctl:
+      name: net.ipv4.ip_forward
+      value: 1
+      state: present
+    become: true
+  - name: install dhcpd
+    apt:
+      name: isc-dhcp-server
+    become: true
+
+# ip tables here?

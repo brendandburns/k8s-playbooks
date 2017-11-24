@@ -1,0 +1,20 @@
+- hosts: all 
+  tasks:
+  - name: Update cache and kubelet 
+    apt:
+      name: kubelet 
+      state: latest
+      update_cache: yes
+    sudo: yes
+  - name: Update kubeadm
+    apt:
+      name: kubeadm
+      state: latest
+      update_cache: yes
+    sudo: yes
+  - name: Update kubectl
+    apt:
+      name: kubectl
+      state: latest
+      update_cache: yes 
+    sudo: yes
