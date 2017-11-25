@@ -1,0 +1,11 @@
+- hosts: all 
+  tasks:
+  - name: install logrotate 
+    apt:
+      name: logrotate 
+      state: latest
+      update_cache: yes
+    become: true 
+  - name: Install config
+    copy: src=docker-container dest=/etc/logrotate.d/docker-container owner=root group=root mode=0644
+    become: true
