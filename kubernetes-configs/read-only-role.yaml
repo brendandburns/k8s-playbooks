@@ -1,0 +1,36 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: read-only-role 
+rules:
+- apiGroups:
+  - ""
+  - "extensions"
+  - "batch"
+  - "apps"
+  - "rbac.authorization.k8s.io"
+  resources:
+  - events
+  - namespaces
+  - nodes
+  - persistentvolumes
+  - roles
+  - clusterroles
+  - storageclasses
+  - services
+  - ingresses
+  - persistentvolumeclaims
+  - secrets
+  - pods
+  - configmaps
+  - replicasets
+  - replicationcontrollers
+  - daemonsets
+  - deployments
+  - jobs
+  - statefulsets
+  verbs:
+  - get
+  - list 
+  - watch
+

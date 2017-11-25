@@ -1,0 +1,12 @@
+- name: Secure the SSH Service
+  hosts: nodes 
+  tasks:
+    - name: Remove Root SSH Configuration
+      file: path=/root/.ssh state=absent
+      become: true 
+    - name: Copy Secured SSHD Configuration
+      copy: src=sshd_config_secured dest=/etc/ssh/sshd_config owner=root group=root mode=0644
+      become: true 
+    - name: SSHD Restart
+      service: name=sshd state=restarted enabled=yes
+      become: true 
