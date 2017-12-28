@@ -10,6 +10,8 @@ rules:
   - "apps"
   - "rbac.authorization.k8s.io"
   resources:
+  - endpoints
+  - cronjobs
   - events
   - namespaces
   - nodes
