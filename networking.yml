@@ -10,5 +10,17 @@
     apt:
       name: isc-dhcp-server
     become: true
+  - name: Install dhcp config 
+    copy: src=dhcpd.conf dest=/etc/dhcp/dhcpd.conf owner=root group=root mode=0644
+    become: true 
+  - name: restart dhcpd service. 
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      name: isc-dhcp-server 
+  - name: enable dhcpd service 
+    systemd:
+      name: isc-dhcp-server
+      enabled: yes
 
 # ip tables here?

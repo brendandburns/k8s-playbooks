@@ -1,6 +1,11 @@
 - name: Secure the SSH Service
-  hosts: nodes 
+  hosts: all 
   tasks:
+    - name: Install ssh
+      apt:
+        name: openssh-server
+        update_cache: yes
+      become: true
     - name: Remove Root SSH Configuration
       file: path=/root/.ssh state=absent
       become: true 
