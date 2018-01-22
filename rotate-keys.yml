@@ -3,6 +3,7 @@
   vars:
     - new_pub_key: ~/.ssh/id_rsa_new.pub
     - new_priv_key: ~/.ssh/id_rsa_new
+    - external_key: ~/.ssh/external.pub
  
   tasks:
     - name: Create new ssh key-pair
@@ -21,7 +22,12 @@
     - name: Make our new key exclusive
       authorized_key: key="{{ lookup('file', new_pub_key) }}"
                       user=bburns state=present exclusive=yes
- 
+
+    - name: Add external keys to master
+      authorized_key: key="{{ lookup('file', external_key) }}"
+                      user=bburns state=present
+      when: inventory_hostname == play_hosts[0]
+
     - name: Move new key into default location
       command: mv {{ new_priv_key }} ~/.ssh/id_rsa
       when: inventory_hostname == play_hosts[0]
