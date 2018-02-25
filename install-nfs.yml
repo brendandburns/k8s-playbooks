@@ -1,0 +1,8 @@
+- hosts: all 
+  tasks:
+  - name: Update cache and nfs client
+    apt:
+      name: nfs-common
+      state: latest
+      update_cache: yes
+    become: true 

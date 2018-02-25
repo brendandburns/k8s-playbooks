@@ -6,6 +6,7 @@ metadata:
   labels:
     name: prometheus
   name: prometheus
+  namespace: kube-system
 spec:
   selector:
     app: prometheus
@@ -20,6 +21,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: prometheus
+  namespace: kube-system
 spec:
   replicas: 1
   selector:

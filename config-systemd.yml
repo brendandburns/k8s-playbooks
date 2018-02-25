@@ -1,0 +1,6 @@
+- name: Configure Systemd 
+  hosts: all 
+  tasks:
+    - name: Copy Systemd Config 
+      copy: src=system.conf dest=/etc/systemd/system.conf owner=root group=root mode=0644
+      become: true 

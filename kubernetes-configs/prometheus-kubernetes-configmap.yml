@@ -276,9 +276,5 @@ data:
         target_label: kubernetes_pod_name
 kind: ConfigMap
 metadata:
-  creationTimestamp: 2018-01-02T04:31:58Z
   name: prometheus
-  namespace: default
-  resourceVersion: "345723"
-  selfLink: /api/v1/namespaces/default/configmaps/prometheus
-  uid: de7a9a55-ef75-11e7-9435-b827ebe83557
+  namespace: kube-system 
