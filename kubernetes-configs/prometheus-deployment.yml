@@ -38,7 +38,8 @@ spec:
       - name: prometheus
         image: brendanburns/armv7-prometheus:v1.5.1 
         args:
-          - '-storage.local.retention=6h'
+          - '-storage.local.path=/data/mnt/md0/nfs/prometheus'
+          - '-storage.local.retention=154h'
           - '-storage.local.memory-chunks=500000'
           - '-config.file=/etc/prometheus/prometheus.yml'
         ports:
@@ -47,7 +48,12 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/prometheus
+        - name: data
+          mountPath: /data
       volumes:
       - name: config-volume
         configMap:
           name: prometheus
+      - name: data 
+        persistentVolumeClaim:
+          claimName: nfs-prom

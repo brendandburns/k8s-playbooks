@@ -11,6 +11,13 @@ data:
     # If you are using Kubernetes 1.7.2 or earlier, please take note of the comments
     # for the kubernetes-cadvisor job; you will need to edit or remove this job.
 
+    # Remote write endpoint configuration (for Graphite, OpenTSDB, or InfluxDB).
+    remote_write:
+      url: "http://10.0.0.104:8086/api/v1/prom/write?u=paul&p=foo&db=prometheus"
+    # Remote read endpoint configuration (for InfluxDB only at the moment).
+    # remote_read:
+    #   url: "http://10.0.0.104:8086/api/v1/prom/read?u=paul&p=foo&db=prometheus"
+
     # Scrape config for API servers.
     #
     # Kubernetes exposes API servers as endpoints to the default/kubernetes
