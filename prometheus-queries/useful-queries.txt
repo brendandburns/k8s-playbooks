@@ -1,0 +1,8 @@
+# All kube-system CPU:
+sum by (pod_name) (rate(container_cpu_usage_seconds_total{namespace="kube-system"}[5m]))
+
+# All kube-system Memory:
+sum by (pod_name) (container_memory_usage_bytes{namespace="kube-system"})
+
+# Node health:
+sum by (status) (kube_node_status_condition{condition="Ready"})
