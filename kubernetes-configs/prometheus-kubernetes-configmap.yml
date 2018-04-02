@@ -13,10 +13,10 @@ data:
 
     # Remote write endpoint configuration (for Graphite, OpenTSDB, or InfluxDB).
     remote_write:
-      url: "http://10.0.0.104:8086/api/v1/prom/write?u=paul&p=foo&db=prometheus"
+      - url: "http://10.0.0.104:8086/api/v1/prom/write?u=paul&p=foo&db=prometheus"
     # Remote read endpoint configuration (for InfluxDB only at the moment).
-    # remote_read:
-    #   url: "http://10.0.0.104:8086/api/v1/prom/read?u=paul&p=foo&db=prometheus"
+    remote_read:
+      - url: "http://10.0.0.104:8086/api/v1/prom/read?u=paul&p=foo&db=prometheus"
 
     # Scrape config for API servers.
     #

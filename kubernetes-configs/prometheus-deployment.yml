@@ -36,12 +36,11 @@ spec:
       serviceAccountName: prometheus 
       containers:
       - name: prometheus
-        image: brendanburns/armv7-prometheus:v1.5.1 
+        image: brendanburns/armv7-prometheus:v2.2.1 
         args:
-          - '-storage.local.path=/data/mnt/md0/nfs/prometheus'
-          - '-storage.local.retention=154h'
-          - '-storage.local.memory-chunks=500000'
-          - '-config.file=/etc/prometheus/prometheus.yml'
+          - '--storage.tsdb.path=/data/mnt/md0/nfs/prometheus'
+          - '--storage.tsdb.retention=6h'
+          - '--config.file=/etc/prometheus/prometheus.yml'
         ports:
         - name: web
           containerPort: 9090
