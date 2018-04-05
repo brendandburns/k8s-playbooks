@@ -1,0 +1,38 @@
+- name: Install Prometheus node exporter 
+  hosts: all
+  tasks:
+  - name: Create the node_exporter user
+    user:
+      name: node_exporter
+      shell: /sbin/nologin
+    become: true
+  - name: Copy node_exporter to all nodes
+    copy:
+      src: node_exporter-0.15.2.linux-armv7/node_exporter
+      dest: /usr/sbin/node_exporter
+      owner: root
+      group: root
+      mode: 0755
+    become: true
+  - name: Copy node_exporter.unit to all nodes
+    copy: src=node_exporter.service dest=/etc/systemd/system/node_exporter.service owner=root group=root mode=0644
+    become: true
+  - name: Make sysconfig directory
+    file:
+      dest: /etc/sysconfig
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    become: true
+  - name: Copy node_exporter sysconfig to all nodes
+    copy: src=sysconfig.node_exporter dest=/etc/sysconfig/node_exporter owner=root group=root mode=0644
+    become: true
+  - name: Start node_exporter
+    systemd:
+      name: node_exporter
+      enabled: true
+      state: started
+    become: true
+
+     
