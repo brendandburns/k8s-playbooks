@@ -38,9 +38,14 @@ spec:
       - name: prometheus
         image: brendanburns/armv7-prometheus:v2.2.1 
         args:
-          - '--storage.tsdb.path=/data/mnt/md0/nfs/prometheus'
-          - '--storage.tsdb.retention=6h'
+          - '--storage.tsdb.path=/data'
+          - '--storage.tsdb.retention=3h'
           - '--config.file=/etc/prometheus/prometheus.yml'
+        resources:
+          requests:
+            memory: "500Mi"
+          limits:
+            memory: "500Mi"
         ports:
         - name: web
           containerPort: 9090
@@ -54,5 +59,4 @@ spec:
         configMap:
           name: prometheus
       - name: data 
-        persistentVolumeClaim:
-          claimName: nfs-prom
+        emptyDir: {}

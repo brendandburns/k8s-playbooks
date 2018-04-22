@@ -26,6 +26,16 @@ data:
     # default named port `https`. This works for single API server deployments as
     # well as HA API server deployments.
     scrape_configs:
+    - job_name: "node"
+      scrape_interval: "60s"
+      static_configs:
+      - targets:
+        - '10.0.0.1:9100'
+        - '10.0.0.101:9100'
+        - '10.0.0.102:9100'
+        - '10.0.0.103:9100'
+        - '10.0.0.104:9100'
+
     - job_name: 'kubernetes-apiservers'
 
       kubernetes_sd_configs:
