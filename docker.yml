@@ -1,0 +1,19 @@
+- hosts: all 
+  tasks:
+  - name: add key 
+    apt_key:
+      url: https://download.docker.com/linux/debian/gpg 
+      state: present
+    become: true
+  - name: add repo
+    apt_repository:
+      repo:  deb [arch=armhf] https://download.docker.com/linux/debian stretch stable
+      state: present
+    become: true
+  - name: install
+    apt:
+      name: docker-ce 
+      state: latest
+      update_cache: yes
+    become: true
+  
