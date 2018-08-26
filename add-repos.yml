@@ -1,5 +1,10 @@
 - hosts: all 
   tasks:
+  - name: install prereqs
+    apt:
+      name: apt-transport-https
+      state: present
+    become: true
   - name: add key 
     apt_key:
       url:  https://packages.cloud.google.com/apt/doc/apt-key.gpg

@@ -7,7 +7,7 @@
     become: true
   - name: add repo
     apt_repository:
-      repo:  deb [arch=armhf] https://download.docker.com/linux/debian stretch stable
+      repo:  deb https://download.docker.com/linux/debian stretch stable
       state: present
     become: true
   - name: install
